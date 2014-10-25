@@ -20,10 +20,11 @@ Steps:
   - Columns whose headers contain "meanFreq()" or "stdFreq()" are not included because the way they are described in project     instruction implies they should be treated differently. In other words, they are not "measurement" mean or stdev.
 
 3.Uses descriptive activity names to name the activities in the data set
-  - Merge the final dataset and data from "activity_labels.txt". This populates levels of activities with meaningful names. 
+  - Merge the final dataset and data from "activity_labels.txt". This populates levels of activities with meaningful names.
+  - A detailed analysis reveals that "fBodyAccJerkMag", "fBodyGyroMag","fBodyGyroJerkMag" related measurements are described     in the "features_info.txt" file yet missing from the "features.txt" table. Instead, there are a set of columns in       "features.txt" that describe "fBodyBodyAccJerkMag", "fBodyBodyGyroMag", "fBodyBodyGyroJerkMag" measurements. It is understood     as that the system mislabled these measurements by duplicating the word "Body". To match the description in the original     data description, these columns are renamed in the final output.
 
 4.Appropriately labels the data set with descriptive variable names. 
-  - This is already done in step 1.
+  - This is already done in step 1 and step 3.
 
 5.Create an independent tidy data set with the average of each variable for each activity and each subject.
   - Use the melt-dcast functions to calculate means for each column, for each "activity" and each "subject".
