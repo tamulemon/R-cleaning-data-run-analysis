@@ -8,7 +8,10 @@ This is the runanalysis R code to clean up dataset for the project
 
 Steps:
 1.Merges the training and the test sets to create one data set.
-  - Add the columns of "activities" and "subject" to test and training dataset before combining them. "activities" column stores data from "activity_labels.txt". "subject
+  Frist read all tables into R.
+  - Add the columns of "activities" and "subject" to test(X_test.txt) and training(X_train.txt) datasets before combining        them. 
+    For test dataset: "activities" column store data from "y_test.txt". "subject" stores data from "subject_test.txt" table. 
+    For training dataset: "activities" stores data from "y_train.txt". "subject" stores data from "subject_train.txt" table. 
   - Combine 2 datasets into 1 by calling rbind. Rename all the columns using the names stored in table "features".
 
 2.Extracts only the measurements on the mean and standard deviation for each measurement. 
@@ -23,7 +26,7 @@ Steps:
   - This is already done in step 1.
 
 5.Create an independent tidy data set with the average of each variable for each activity and each subject.
-  - Use the melt-dcast function to calculate means for each column, for each "activity" and each "subject".
+  - Use the melt-dcast functions to calculate means for each column, for each "activity" and each "subject".
   - Write the data as a txt file and try to re-read it into R.
   - Compare the head of the original "avetable" and "testtable", and they are the same. 
 
