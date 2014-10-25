@@ -1,1 +1,41 @@
 
+"Tidy data average" dataset
+ 
+=================
+There are 68 variables in the table. Each cell contains the mean for a particular variable/activity/subject combination. 
+The calculation is based on the data frame "showActivities" generated at the end of the run_analysis.R code, 
+by melt-recast functions.
+
+Activities: one of the 6 activities the subject is performing. 
+Values are: WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING               
+
+Subject: the ID of the volunteer that takes the action. Value from 1 to 30. 
+
+The following are the feature variables that are included in the final "showActivities" dataset. 
+'-XYZ' is used to denote 3-axial signals in the X, Y and Z directions. 
+- Each feature variable has 2 measurements:
+mean(): Mean value
+std(): Standard deviation
+-	Mean is calculated for each direction independently. Mean is also calculated for mean() and std() independently. 
+For example:
+  tGravityAcc-mean()-X column : stores the mean of the mean of tGravityAcc feature in the X direction.
+  tBodyAcc-std()-Z: stores the mean of the standard deviation of tBodyAcc feature in the Z direction.
+- “Mag” variable is captured for the magnitude of particular variable. It is not a vector so there is no direction value. 
+         
+tBodyAcc-XYZ
+tGravityAcc-XYZ
+tBodyAccJerk-XYZ
+tBodyGyro-XYZ
+tBodyGyroJerk-XYZ
+tBodyAccMag
+tGravityAccMag
+tBodyAccJerkMag
+tBodyGyroMag
+tBodyGyroJerkMag
+fBodyAcc-XYZ
+fBodyAccJerk-XYZ
+fBodyGyro-XYZ
+fBodyAccMag
+fBodyAccJerkMag
+fBodyGyroMag
+fBodyGyroJerkMag
