@@ -36,8 +36,18 @@ final<-select(combinedset,grep("mean()",colnames(combinedset),fixed=T),
 showActivities<-merge(final, activities, by.x="activities", by.y="V1") %>%
   select(-activities) 
 colnames(showActivities)[68]<-"activities"
+
+# A detailed analysis reveals that "fBodyAccJerkMag", "fBodyGyroMag","fBodyGyroJerkMag" related measurements are described in the  
+# "features_info.txt" file yet missing from the "features.txt" table. Instead, there are a set of columns in "features.txt" that describe 
+# "fBodyBodyAccJerkMag", "fBodyBodyGyroMag", "fBodyBodyGyroJerkMag" measurements. It is understood as that the system mislabled these
+# measurements by duplicating the word "Body". To match the description in the codebook, these columns are renamed in the final output.
+colnames(showActivities[c(grep("BodyBody", colnames(showActivities), fixed =T))])
+colnames(showActivities)[c(grepl("BodyBody", colnames(showActivities), fixed =T))]<-c(
+   "fBodyAccJerkMag-mean()", "fBodyGyroMag-mean()" , "fBodyGyroJerkMag-mean()", "fBodyAccJerkMag-std()",
+   "fBodyGyroMag-std()","fBodyGyroJerkMag-std()" )
+
 ### 4.Appropriately labels the data set with descriptive variable names. 
-# Already done in step 1.
+# Already done in step 1 and step 3. 
 
 ### 5.Create an independent tidy data set with the average of each variable for each activity and each subject.
 # Use the melt-dcast function to calculate means for each column, for each "activity" and each "subject".
@@ -47,6 +57,6 @@ dataMelt<-melt(showActivities, id=c("subject","activities"))
 avetable<-dcast(dataMelt,formula=activities+subject~...,mean)
 head(avetable)
 write.table(avetable, file = "Tidy data average.txt", row.names = F)
-testtable<-read.table("Tidy data average.txt", header = T,check.names = F)
+testtable<-read.table("Tidy data average.txt", header = T,check.names=FALSE)
 head(testtable)
 
