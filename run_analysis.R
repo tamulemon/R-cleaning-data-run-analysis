@@ -46,7 +46,7 @@ colnames(showActivities)[68]<-"activities"
 dataMelt<-melt(showActivities, id=c("subject","activities"))
 avetable<-dcast(dataMelt,formula=activities+subject~...,mean)
 head(avetable)
-write.table(avetable, file = "Tidy data average.txt", sep = ",", row.names = F,qmethod = "double")
-testtable<-read.table("Tidy data average.txt", header = TRUE, sep = ",")
+write.table(avetable, file = "Tidy data average.txt", row.names = F)
+testtable<-read.table("Tidy data average.txt", header = T,check.names = F)
 head(testtable)
 
